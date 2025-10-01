@@ -7,16 +7,29 @@ function menu(){
     return choix;
 }
 // Introduire un livre
-function introduire(livres){
-    let id_livre = prompt("Entrez l'id du livre :");
-    let titre = prompt("Entrez vous le titre du livre :")
-    let auteur = prompt("Entrez vous le nom de l'auteur :")
-    let annee = prompt("Entrez vous l'Année de publication : ")
-    let disponible = prompt("Disponible (oui/non) :")
-    livres.push({id_livre : id_livre , titre : titre, auteur : auteur, annee : annee , disponible : disponible == 'oui' ? true : false})
-    console.log('Le livre est ajouter avec success !');
-    
+// Introduire un livre - RETOURNE true si succès, false si échec
+function introduire(livres) {
+    let id_livre = prompt("Entrez l'id du livre :").trim();
+    let livre = livres.find((element) => element.id_livre == id_livre);
+    if(livre) {
+        console.log("--------------------------------------------------\nL'ID que vous avez entré existe déjà !!!!!\n--------------------------------------------------");
+    }else{
+        let titre = prompt("Entrez le titre du livre :");
+        let auteur = prompt("Entrez le nom de l'auteur :");
+        let annee = prompt("Entrez l'année de publication :");
+        let disponible = prompt("Disponible (oui/non) :");
+        livres.push({
+            id_livre: id_livre,
+            titre: titre,
+            auteur: auteur,
+            annee: annee,
+            disponible: disponible == 'oui' ? true : false
+        });
+        console.log("Le livre a été ajouté avec succès !");
+    }
 }
+
+
 // Ajouter plusieurs livres
 function ajouter_plusieurs(livres){
     console.log("--------------------------------------------------");
@@ -215,10 +228,10 @@ function afficher_livres_empruntes(abonnes, livres, emprunts) {
 // BiblioJS fonction 
 function biblioJS_fonction(){
     let livres = [
-        { id_livre: "123", titre: "Le Petit Prince", auteur:"Saint-Exupéry", annee: 1943, disponible: true },
-        { id_livre: "456", titre: "L'Étranger", auteur: "Camus", annee:1942, disponible: true },
-        { id_livre: "339", titre: "Song of fire and ice", auteur: "j.R.R.Martin", annee:2000, disponible: true },
-        { id_livre: "334", titre: "the hobbite", auteur: "J. R. R.Tolkien", annee: 1937, disponible: true }
+        { id_livre: 123 , titre: "Le Petit Prince", auteur:"Saint-Exupéry", annee: 1943, disponible: true },
+        { id_livre: 456 , titre: "L'Étranger", auteur: "Camus", annee:1942, disponible: true },
+        { id_livre: 339 , titre: "Song of fire and ice", auteur: "j.R.R.Martin", annee:2000, disponible: true },
+        { id_livre: 334 , titre: "the hobbite", auteur: "J. R. R.Tolkien", annee: 1937, disponible: true }
     ]
     let abonnes = [
         { id: 1, nom: "Dupont", prenom: "Alice", email: "alice@mail.com" },

@@ -7,15 +7,25 @@ function menu(){
     return choix;
 }
 // Introduire un livre
-function introduire(livres){
-    let id_livre = prompt("Entrez l'id du livre :");
-    let titre = prompt("Entrez vous le titre du livre :")
-    let auteur = prompt("Entrez vous le nom de l'auteur :")
-    let annee = prompt("Entrez vous l'Année de publication : ")
-    let disponible = prompt("Disponible (oui/non) :")
-    livres.push({id_livre : id_livre , titre : titre, auteur : auteur, annee : annee , disponible : disponible == 'oui' ? true : false})
-    console.log('Le livre est ajouter avec success !');
-    
+function introduire(livres) {
+    let id_livre = prompt("Entrez l'id du livre :").trim();
+    let livre = livres.find((element) => element.id_livre == id_livre);
+    if(livre) {
+        console.log("L'ID que vous avez entré existe déjà !!!!!");
+    }else{
+        let titre = prompt("Entrez le titre du livre :");
+        let auteur = prompt("Entrez le nom de l'auteur :");
+        let annee = prompt("Entrez l'année de publication :");
+        let disponible = prompt("Disponible (oui/non) :");
+        livres.push({
+            id_livre: id_livre,
+            titre: titre,
+            auteur: auteur,
+            annee: annee,
+            disponible: disponible == 'oui' ? true : false
+        });
+        console.log("Le livre a été ajouté avec succès !");
+    }
 }
 // Ajouter plusieurs livres
 function ajouter_plusieurs(livres){
