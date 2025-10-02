@@ -102,6 +102,19 @@ function operations_livres(livres){
         }
     }while(operations != 6)
 }
+
+function sort_livres(livres){
+    let sortedLivres ;
+
+    let ordre = Number(prompt("Entrer votre choix : "));
+    if(ordre == 1){
+        sortedLivres = livres.sort((a, b) => a.titre.toLowerCase().localeCompare(b.titre.toLowerCase()));
+    }else if(ordre == 2){
+        sortedLivres = livres.sort((a, b) => b.titre.toLowerCase().localeCompare(a.titre.toLowerCase()));
+    }else{
+        console.log("invalid choix !!!");
+    }
+}
 //  Gestion des abonnés
 // afficher abonnes 
 function affichager_abonnes(abonnes){
@@ -280,7 +293,7 @@ function biblioJS_fonction(){
                     }while(choixEmprunt != 4)
                 break;
             case 6:
-                console.log("--------------------------------------------------\nMerci d'avoir utilisé BiblioJS !\n--------------------------------------------------");
+                console.log("--------------------------------------------------\nMerci pour utilisé BiblioJS !\n--------------------------------------------------");
                 break;
             default:
                 console.log("--------------------------------------------------\nInvalid choix !\n--------------------------------------------------");
